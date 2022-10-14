@@ -9,9 +9,14 @@
 <body>
     <h1>lista de personas:</h1>
     
-    {% for persona in  personas %}
-        <li>{{personas}}</li>
+<p>
+    
+
+    {% for persona in personas %}
+   <li> {{persona.nombre}} {{persona.apellido}} {{persona.edad}}</li> 
     {% endfor %}
+
+</p>
     
 </body>
 </html>

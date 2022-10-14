@@ -20,33 +20,30 @@ def mi_template(request):
       
     return HttpResponse(template_renderizado)  
 
-def crear_persona(request, nombre, apellido):
+def crear_persona(request):
     
-    persona = Persona(nombre=nombre, apellido=apellido)
-    # persona2 = Persona(nombre="Antonella>", apellido="Roccuzzo>", edad=34)
-    # persona3 = Persona(nombre="Thiago>", apellido="Messi>", edad=9)
+    personas1 = Persona(nombre="Lionel", apellido="Messi", edad=35)
+    personas2 = Persona(nombre="Antonella", apellido="Roccuzzo", edad=34)
+    personas3 = Persona(nombre="Thiago", apellido="Messi", edad=9)
     
     
-    persona.save()
-    # persona2.save()
-    # persona3.save()
     
-    return render(request, "home/crear_persona.html", {""})
+    
+    personas1.save()
+    personas2.save()
+    personas3.save()
+    
+    return render(request, "home/crear_persona.html", {"personas": personas1})
+    
+
 
 def ver_personas(request):
     
-    # personas = Persona(nombre="Lionel", apellido="Messi", edad=35)
-    #  personas = Persona(nombre="Lionel", apellido="Messi", edad=35)
-    # persona2 = Persona(nombre="Antonella>", apellido="Roccuzzo>", edad=34)
-    # persona3 = Persona(nombre="Thiago>", apellido="Messi>", edad=9)
     
-    
-    # persona2.save()
-    # persona3.save()
     personas = Persona.objects.all()
-     
     
     return render(request, "home/ver_personas.html", {"personas": personas})
+    
 
 
 # def curso(request,nombre,apellido,edad):
