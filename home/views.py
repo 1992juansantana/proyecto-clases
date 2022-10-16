@@ -43,6 +43,11 @@ def ver_personas(request):
     personas = Persona.objects.all()
     
     return render(request, "home/ver_personas.html", {"personas": personas})
+
+
+def index(request):
+    
+    return render(request, "home/index.html")
     
 
 
