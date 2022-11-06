@@ -1,19 +1,17 @@
 {% extends 'padres/base.html' %}
 
 {% block title_pagina %}
-<title>Crear Persona</title>
+<title>Crear Moto</title>
 {% endblock title_pagina %}
 
 {% block mi_contenido %}
-<form action={% url 'crear_persona' %} method="POST">
+<form action={% url 'crear_moto' %} method="POST">
     {% csrf_token %}
     <table>
-    {{formulario}}
+        {{formulario}}
     </table>
     
     <button>Crear</button>
     
 </form>
 {% endblock mi_contenido %}
-
-

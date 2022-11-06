@@ -3,14 +3,15 @@ from email.headerregistry import MessageIDHeader
 from django.http import HttpResponse
 from datetime import datetime
 from django.template import loader, Context, Template
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import random
+from home.forms import PersonaFormulario, BusquedaFormulario
 
 from home.models import Persona
 
 def mi_template(request):
     
-    cargar_archivo = open(r'C:\Users\juan_\OneDrive\Escritorio\proyecto-clases\templates\mi_template.html')
+    cargar_archivo = open(r'C:\Users\juan_\OneDrive\Escritorio\proyecto-clases\home\templates\home\mi_template.html')
     template = Template(cargar_archivo.read())
     cargar_archivo.close()
     
@@ -22,27 +23,41 @@ def mi_template(request):
 
 def crear_persona(request):
     
-    personas1 = Persona(nombre="Lionel", apellido="Messi", edad=35)
-    personas2 = Persona(nombre="Antonella", apellido="Roccuzzo", edad=34)
-    personas3 = Persona(nombre="Thiago", apellido="Messi", edad=9)
+    if request.method =='POST':
+        
+        formulario = PersonaFormulario(request.POST)
+      
+        if formulario.is_valid():
+            data = formulario.cleaned_data
     
+            nombre = data['nombre']
+            apellido = data['apellido']
+            edad = data['edad']
+
+        
+            persona = Persona(nombre=nombre, apellido=apellido, edad=edad)
+            persona.save()
     
+            return redirect('ver_personas')
     
-    
-    personas1.save()
-    personas2.save()
-    personas3.save()
-    
-    return render(request, "home/crear_persona.html", {"personas": personas1})
+    formulario = PersonaFormulario()
+   
+    return render(request, 'home/crear_persona.html', {'formulario': formulario})
     
 
 
 def ver_personas(request):
     
+    nombre = request.GET.get('nombre', None)
     
-    personas = Persona.objects.all()
+    if nombre:
+        personas = Persona.objects.filter(nombre__incontains=nombre)
+    else:
+        personas = Persona.objects.all()
     
-    return render(request, "home/ver_personas.html", {"personas": personas})
+    formulario = BusquedaFormulario()
+    
+    return render(request, "home/ver_personas.html", {"personas": personas, "formulario": formulario})
 
 
 def index(request):
@@ -51,12 +66,9 @@ def index(request):
     
 
 
-# def curso(request,nombre,apellido,edad):
+def curso(request):
     
-    
-#     persona1 = Persona(nombre=nombre , apellido=apellido, edad=edad)
-    
-#     return render(request, "curso.html", {"persona1":persona1})
+    return render(request, "home/curso.html")
     
 
    
