@@ -22,11 +22,11 @@ def crear_moto(request):
             moto = Moto(
                 marca=datos['marca'], 
                 modelo=datos['modelo'],
-                edad=datos['edad']
+                anio=datos['anio']
             )
             moto.save()
             return redirect('ver_motos')
-        return render(request, 'avanzado/crear_motos.html', {'formulario': formulario})
+        
     
     formulario = MotoFormulario()
     return render(request, 'avanzado/crear_motos.html', {'formulario': formulario})

@@ -8,15 +8,15 @@
 <a class="navbar-brand" href={% url 'crear_moto' %}>Crear Moto</a>
 <p>listado de motos:</p>
 
-{% comment %} <form action={% url 'ver_motos' %} method="GET">
+<form action={% url 'ver_motos' %} method="GET">
     {{formulario}}
     <button>Buscar</button>
-</form> {% endcomment %}
+</form> 
 <p>
     {% if moto %}
 
         {% for motos in motos %}
-            <li> {{motos.marca}} {{motos.modelo}} {{motos.edad}} </li> 
+            <li> {{motos.marca}} {{motos.modelo}} {{motos.anio}} </li> 
         {% endfor %}
 
     {% else %}
