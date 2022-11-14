@@ -13,9 +13,9 @@
     <button>Buscar</button>
 </form> {% endcomment %}
 <p>
-    {% if motos %}
+    {% if object_list %}
 
-        {% for moto in motos %}
+        {% for moto in object_list %}
             <li>
                 {{moto.marca}}{{moto.modelo}}{{moto.anio}}
                 <a href={% url 'editar_moto' moto.id %}>Editar</a>
@@ -26,6 +26,6 @@
     {% else %}
         <p>No se encontraron resultados.</p>
     {% endif %}
-</p>
 
+</p>
 {% endblock mi_contenido %}

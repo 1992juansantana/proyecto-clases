@@ -24,10 +24,18 @@
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
                 <a class="navbar-brand" href={% url 'index' %}>Index</a>
-                <a class="navbar-brand" href={% url 'ver_persona' %}>Ver personas</a>
-                <a class="navbar-brand" href={% url 'mi_template' %}>Mi template</a>
+                {% comment %} <a class="navbar-brand" href={% url 'ver_persona' %}>Ver personas</a>
+                <a class="navbar-brand" href={% url 'mi_template' %}>Mi template</a> {% endcomment %}
                 <a class="navbar-brand" href={% url 'ver_motos' %}>Ver Motos</a>
-                <a class="navbar-brand" href={% url 'crear_moto' %}>Crear Moto</a>
+                {% comment %} <a class="navbar-brand" href={% url 'crear_moto' %}>Crear Moto</a> {% endcomment %}
+                {% if request.user.is_authenticated %}
+                    <a class="navbar-brand" href={% url 'perfil' %}>{{request.user.username}}</a>
+                    <a class="navbar-brand" href={% url 'logout' %}>Cerrar Sesion</a>
+                {% else %}
+                    <a class="navbar-brand" href={% url 'login' %}>Iniciar Sesion</a>
+                    <a class="navbar-brand" href={% url 'registrar' %}>Registrarse</a>
+                {% endif %}
+                
             </div>
         </nav>
         <div class="container">
