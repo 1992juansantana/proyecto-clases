@@ -69,6 +69,13 @@ def index(request):
 def curso(request):
     
     return render(request, "home/curso.html")
+
+
+def nosotros(request):
+    
+    return render(request, "home/nosotros.html")
+
+
     
 
    

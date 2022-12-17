@@ -1,3 +1,4 @@
 from django.contrib import admin
+from avanzado.models import Moto
 
-# Register your models here.
+admin.site.register(Moto)

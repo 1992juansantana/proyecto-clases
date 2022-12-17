@@ -92,7 +92,7 @@ class CrearMotos(CreateView):
 class EditarMoto(LoginRequiredMixin, UpdateView):
     model= Moto
     success_url = '/avanzado/motos/'
-    template_name = 'avanzado/crear_moto_cbv.html'
+    template_name = 'avanzado/editar_moto_cbv.html'
     fields = ['marca', 'modelo', 'anio'] 
     
 class EliminarMoto(LoginRequiredMixin, DeleteView):
