@@ -8,16 +8,12 @@
 <a class="navbar-brand" href={% url 'crear_moto' %}>Crear Moto</a>
 <p>Listado de Motos:</p>
 
-{% comment %} <form action={% url 'ver_mascotas' %} method="GET">
-    {{formulario}}
-    <button>Buscar</button>
-</form> {% endcomment %}
 <p>
     {% if object_list %}
 
         {% for moto in object_list %}
             <li>
-                {{moto.marca}}{{moto.modelo}}{{moto.anio}}
+                {{moto.marca}}{{moto.modelo}}{{moto.anio}}{{moto.portada}}{{moto.tipo}}{{moto.vendedor}}
                 <a href={% url 'editar_moto' moto.id %}>Editar</a>
                 <a href={% url 'eliminar_moto' moto.id %}>Eliminar</a>
             </li>

@@ -5,10 +5,11 @@
 {% endblock title_pagina %}
 
 {% block mi_contenido %}
-<form action={% url 'crear_moto' %} method="POST">
+<form action={% url 'crear_moto' %} method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <table>
         {{form}}
+        {{form.media}}
     </table>
     
     <button>Crear</button>

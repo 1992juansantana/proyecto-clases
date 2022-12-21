@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'home',
     'avanzado',
     'accounts',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [

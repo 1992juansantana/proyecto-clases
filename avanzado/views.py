@@ -29,7 +29,10 @@ def crear_moto(request):
             moto = Moto(
                 marca=datos['marca'], 
                 modelo=datos['modelo'],
-                anio=datos['anio']
+                anio=datos['anio'],
+                portada=datos['portada'],
+                tipo=datos['tipo'],
+                vendedor=datos['vendedor'],
             )
             moto.save()
             return redirect('ver_motos')
@@ -52,6 +55,9 @@ def editar_moto(request, id):
             moto.marca = datos['marca']
             moto.modelo = datos['modelo']
             moto.anio = datos['anio']
+            moto.portada = datos['portada']
+            moto.tipo = datos['tipo']
+            moto.vendedor = datos['vendedor']
 
             moto.save()
             
@@ -65,6 +71,9 @@ def editar_moto(request, id):
             'marca': moto.marca,
             'modelo': moto.modelo,
             'anio': moto.anio,
+            'portada': moto.portada,
+            'tipo' : moto.tipo,
+            'vendedor': moto.vendedor,
            
         }
     )
@@ -87,13 +96,13 @@ class CrearMotos(CreateView):
     model= Moto
     success_url = '/avanzado/motos/'
     template_name = 'avanzado/crear_moto_cbv.html'
-    fields = ['marca', 'modelo', 'anio']    
+    fields = ['marca', 'modelo', 'anio', 'portada', 'tipo', 'vendedor']    
     
 class EditarMoto(LoginRequiredMixin, UpdateView):
     model= Moto
     success_url = '/avanzado/motos/'
     template_name = 'avanzado/editar_moto_cbv.html'
-    fields = ['marca', 'modelo', 'anio'] 
+    fields = ['marca', 'modelo', 'anio', 'portada', 'tipo', 'vendedor'] 
     
 class EliminarMoto(LoginRequiredMixin, DeleteView):
     model= Moto
